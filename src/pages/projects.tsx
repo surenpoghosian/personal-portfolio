@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProjectsScreen from '../components/screens/ProjectsScreen';
-import { projects } from '../data/projects';
+import { projects } from '../data/newprojects';
 
 const Projects = (): React.ReactElement => {
   return (

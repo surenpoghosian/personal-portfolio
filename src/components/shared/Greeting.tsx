@@ -14,27 +14,28 @@ const Greeting = (): React.ReactElement => {
 
   const projectsLinkElement = (
     <span className="inline-block">
-      <HyperLink link={projectsLink} className="underline font-semibold">projects</HyperLink>
+      <HyperLink link={projectsLink} className="underline font-semibold">
+        projects
+      </HyperLink>
     </span>
   );
 
   const blogLinkElement = (
     <span className="inline-block">
-      <HyperLink link={blogLink} className="underline font-semibold">articles</HyperLink>
+      <HyperLink link={blogLink} className="underline font-semibold">
+        articles
+      </HyperLink>
     </span>
   );
 
   return (
     <p className="font-light">
-      Hi there!
-      I&apos;m Oleksii. I work as a full-time software engineer. In my spare time I do
-      open-sourcing.
-      Most of my open-source {projectsLinkElement} are focused
-      on one thing &ndash; <i>to help people learn</i>. You may use these projects to
-      learn about algorithms in JavaScript and get prepared for technical interviews, or
-      to learn Python syntax and start experimenting with machine learning algorithms
-      and math behind them, etc. I also write {blogLinkElement} about life, web-development
-      and machine learning.
+      Hi there! I’m Suren. I’m a software enthusiast deeply involved in systems design and development. I spend most of
+      my time working with Node.js, TypeScript, and Python, creating systems that emphasize scalability and efficiency.
+      I enjoy exploring software architecture patterns like Creational, Structural, and Behavioral, and implementing
+      them to solve real-world problems. In my spare time, I contribute to open-source projects, helping others learn
+      about algorithms, clean code, and backend development. I also write {blogLinkElement} about software engineering,
+      sharing my insights on design patterns, coding practices, and personal development in tech.
     </p>
   );
 };

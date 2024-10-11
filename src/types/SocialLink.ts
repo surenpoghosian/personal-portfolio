@@ -1,14 +1,14 @@
 import type { Link } from './Link';
 
 export const socialLinkTypes = {
-  devTo: 'DevTo',
-  facebook: 'Facebook',
+  // devTo: 'DevTo',
+  // facebook: 'Facebook',
   gitHub: 'GitHub',
-  instagram: 'Instagram',
+  // instagram: 'Instagram',
   linkedIn: 'LinkedIn',
   medium: 'Medium',
   stackOverflow: 'StackOverflow',
-  twitter: 'Twitter',
+  // twitter: 'Twitter',
   youTube: 'YouTube',
 };
 

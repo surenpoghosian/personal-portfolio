@@ -4,7 +4,7 @@ import { CreateNodeArgs, CreatePagesArgs } from 'gatsby';
 import * as path from 'path';
 import { routes } from './src/constants/routes';
 import { projectMapToArray } from './src/utils/project';
-import { projects } from './src/data/projects';
+import { projects } from './src/data/newprojects';
 import { Project } from './src/types/Project';
 
 export function onCreateNode(args: CreateNodeArgs): void {

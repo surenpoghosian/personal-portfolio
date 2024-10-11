@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
 import ProjectScreen from '../components/screens/ProjectScreen';
-import { projects } from '../data/projects';
+import { projects } from '../data/newprojects';
 import { ProjectID, Project as ProjectType } from '../types/Project';
 
 interface ProjectProps extends PageProps {

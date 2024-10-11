@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 
-import { projects } from '../data/projects';
+import { projects } from '../data/newprojects';
 import { Project } from '../types/Project';
 import { getGitHubProjectID, projectMapToArray } from '../utils/project';
 import { GitHubStars } from '../types/GitHubStars';

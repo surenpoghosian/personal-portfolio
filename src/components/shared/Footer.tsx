@@ -1,8 +1,9 @@
 import React from 'react';
 import { FiGithub } from '@react-icons/all-files/fi/FiGithub';
 import { FaRegHeart } from '@react-icons/all-files/fa/FaRegHeart';
-import { AiOutlineMail } from '@react-icons/all-files/ai/AiOutlineMail';
-import { FiRss } from '@react-icons/all-files/fi/FiRss';
+import { RiRoadMapLine } from '@react-icons/all-files/ri/RiRoadMapLine';
+import { AiFillCode } from '@react-icons/all-files/ai/AiFillCode';
+import { MdInsertLink } from '@react-icons/all-files/md/MdInsertLink';
 
 import HyperLink from './HyperLink';
 import { discussionsURL, rssPath, supportURL } from '../../constants/links';
@@ -24,67 +25,40 @@ const Footer = (props: FooterProps): React.ReactElement => {
     url: discussionsURL,
   };
 
-  const subscribeLink: Link = {
-    url: '/subscribe',
+  const careerLink: Link = {
+    url: 'https://my-aua-app.vercel.app/about',
   };
 
-  const rssLink: Link = {
-    url: rssPath,
+  const roadmapLink: Link = {
+    url: 'https://roadmap.sh/u/surenpoghosian',
+  };
+
+  const helpfulLink: Link = {
+    url: 'https://linktr.ee/surenpoghosian',
   };
 
   const supportLink: Link = {
     url: supportURL,
   };
 
-  const feedbackFooterLink = withFeedback ? (
-    <HyperLink
-      link={issuesLink}
-      className="text-xs mr-5"
-      startEnhancer={(<FiGithub size={20} />)}
-    >
-      Feedback
-    </HyperLink>
-  ) : null;
-
-  const supportFooterLink = withSupport ? (
-    <HyperLink
-      link={supportLink}
-      className="text-xs mr-5"
-      startEnhancer={(<FaRegHeart size={20} />)}
-    >
-      Support
-    </HyperLink>
-  ) : null;
-
   return (
     <footer className={`${className}`}>
       <Row responsive>
         <Row style={{ flex: 1 }} className="mb-6 sm:mb-0">
-          <HyperLink
-            link={subscribeLink}
-            className="text-xs mr-5"
-            startEnhancer={(<AiOutlineMail size={20} />)}
-          >
-            Subscribe
+          <HyperLink link={careerLink} className="text-xs mr-5" startEnhancer={<AiFillCode size={20} />}>
+            Career
           </HyperLink>
 
-          {feedbackFooterLink}
+          <HyperLink link={roadmapLink} className="text-xs" startEnhancer={<RiRoadMapLine size={20} />}>
+            Roadmap
+          </HyperLink>
 
-          {supportFooterLink}
-
-          <HyperLink
-            link={rssLink}
-            className="text-xs"
-            startEnhancer={(<FiRss size={20} />)}
-          >
-            RSS
+          <HyperLink link={helpfulLink} className="text-xs ml-5" startEnhancer={<MdInsertLink size={20} />}>
+            Helpful links
           </HyperLink>
         </Row>
 
-        <div
-          style={{ flex: 1 }}
-          className="flex flex-row items-center justify-center"
-        >
+        <div style={{ flex: 1 }} className="flex flex-row items-center justify-center">
           <SocialLinks
             links={profile?.socialLinks}
             expandable={false}
