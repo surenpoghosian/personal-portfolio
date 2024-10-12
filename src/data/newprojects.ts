@@ -405,12 +405,12 @@ export const projects: Projects = {
   },
   'network-attached-watering-system': {
     id: 'network-attached-watering-system',
-    name: 'Network attached watering system (LORA)',
+    name: 'Network attached watering system (LoRa)',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/network-attached-watering-system/LoRaWAN.png' },
     startDate: '2021-07-30',
     summary: [
-      'Network attached watering system based on ESP32 and LORA',
+      'Network attached watering system based on ESP32 and LoRa',
     ],
     tags: [
       { name: 'Software' },
