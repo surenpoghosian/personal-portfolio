@@ -5,7 +5,7 @@ export const projects: Projects = {
     id: 'scraper',
     name: 'Scraper',
     srcURL: { url: 'https://github.com/surenpoghosian/scraper' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/scraper/library.jpg' },
     startDate: '2024-06-06',
     summary: [
       'A modular web scraper with configurable intervals, demonstrating the practical use of Factory, Builder, and Singleton design patterns.',
@@ -26,7 +26,7 @@ export const projects: Projects = {
     id: 'code-diagnose',
     name: 'code-diagnose',
     srcURL: { url: 'https://github.com/surenpoghosian/code-diagnose' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/code-diagnose/code-doctor.jpg' },
     startDate: '2024-08-23',
     summary: [
       'A tool to analyze project files for software antipatterns.',
@@ -54,6 +54,7 @@ export const projects: Projects = {
     ],
     tags: [
       { name: 'Software' },
+      { name: 'iOS' },
       { name: 'Swift' },
       { name: 'UIKit' },
       { name: 'UIKitDynamics' },
@@ -68,8 +69,8 @@ export const projects: Projects = {
     id: 'talkie',
     name: 'Talkie',
     srcURL: { url: 'https://github.com/surenpoghosian/TalkieFrontEnd' },
-    demoURL: { url: 'https://github.com/surenpoghosian/TalkieFrontEnd' },
-    cover: { srcPath: '' },
+    demoURL: { url: 'https://www.youtube.com/watch?v=GxTYdv1SYeE' },
+    cover: { srcPath: 'projects/talkie/screenshot.jpg' },
     startDate: '2023-07-28',
     summary: [
       'Text to Speach web application',
@@ -112,7 +113,7 @@ export const projects: Projects = {
     id: 'rpi-cluster',
     name: 'Rapsberry Pi cluster',
     // srcURL: { url: '' },
-    cover: { srcPath: 'projects/rpi-cluster/cluster.png' },
+    cover: { srcPath: 'projects/rpi-cluster/cluster.jpg' },
     startDate: '2024-09-02',
     summary: [
       'Raspberry Pi cluster',
@@ -178,7 +179,7 @@ export const projects: Projects = {
     id: 'rack-server-for-experiments',
     name: 'Rack Server for experiments',
     // srcURL: { url: '' },
-    cover: { srcPath: 'projects/rack-server-for-experiments/rack.png' },
+    cover: { srcPath: 'projects/rack-server-for-experiments/rack_nobg.jpg' },
     startDate: '2024-09-02',
     summary: [
       'A combination of rpi cluster, jetson and NAS for experiments...',
@@ -198,8 +199,8 @@ export const projects: Projects = {
     id: 'fpv-drone',
     name: 'FPV racing drone',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
-    startDate: '2018-07-01',
+    cover: { srcPath: 'projects/fpv-drone/drn.jpg' },
+    startDate: '2020-05-01',
     summary: [
       'Self-made FPV racing drone',
     ],
@@ -220,7 +221,7 @@ export const projects: Projects = {
     id: 'remote-control-arduino',
     name: 'TV RC + Arduino',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/remote-control-arduino/remote.jpg' },
     startDate: '2018-10-01',
     summary: [
       'remote-control-arduino',
@@ -242,7 +243,7 @@ export const projects: Projects = {
     id: 'tesla-coil',
     name: 'Tesla Coil',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/tesla-coil/coild.png' },
     startDate: '2017-06-01',
     summary: [
       'Self-made Tesla coil',
@@ -257,11 +258,31 @@ export const projects: Projects = {
     },
     achievements: [],
   },
-  'laboratory-power-supply': {
-    id: 'laboratory-power-supply',
-    name: 'Laboratory Power Supply',
+  'laboratory-power-supply-v1': {
+    id: 'laboratory-power-supply-v1',
+    name: 'Laboratory Power Supply v1',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/laboratory-power-supply-v1/powersupply.jpg' },
+    startDate: '2019-01-10',
+    summary: [
+      'Self-made laboratory power supply',
+    ],
+    tags: [
+      { name: 'Hardware' },
+      { name: 'Laboratory' },
+      { name: 'Power-Supply' },
+    ],
+    gitHubRepo: {
+      owner: 'surenpoghosian',
+      repo: '',
+    },
+    achievements: [],
+  },
+  'laboratory-power-supply-v2': {
+    id: 'laboratory-power-supply-v2',
+    name: 'Laboratory Power Supply v2',
+    // srcURL: { url: '' },
+    cover: { srcPath: 'projects/laboratory-power-supply-v2/power.png' },
     startDate: '2019-01-10',
     summary: [
       'Self-made laboratory power supply',
@@ -281,7 +302,7 @@ export const projects: Projects = {
     id: 'bluetooth-arduino',
     name: 'Bluetooth + Arduino',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/bluetooth-arduino/bluetooth.png' },
     startDate: '2018-10-01',
     summary: [
       'Arduino controlled over bluetooth and a smart phone',
@@ -303,7 +324,7 @@ export const projects: Projects = {
     id: 'door-lock-with-passcode',
     name: 'Smart door lock with passcode',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/door-lock-with-passcode/doorlock.png' },
     startDate: '2018-11-01',
     summary: [
       'Self-made door lock with passcode based on arduino',
@@ -325,7 +346,7 @@ export const projects: Projects = {
     id: 'remote-rocket-launcher',
     name: 'Remote controlled rocket (firework) launcher',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/remote-rocket-launcher/rocketlauncher.png' },
     startDate: '2018-12-01',
     summary: [
       'Firework launcher, made for safely lighting fireworks',
@@ -345,7 +366,7 @@ export const projects: Projects = {
     id: 'wired-rocket-launcher',
     name: 'Wired rocket (firework) launcher',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/wired-rocket-launcher/wiredlaunsher.png' },
     startDate: '2018-12-01',
     summary: [
       'wired-rocket-launcher',
@@ -365,7 +386,7 @@ export const projects: Projects = {
     id: 'wifi-jammer',
     name: 'Wifi jammer',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/wifi-jammer/esp8266.jpg' },
     startDate: '2019-01-10',
     summary: [
       'Simple wifi jammer based on ESP32',
@@ -374,7 +395,7 @@ export const projects: Projects = {
       { name: 'Software' },
       { name: 'WiFi' },
       { name: 'Jammer' },
-      { name: 'ESP32' },
+      { name: 'ESP8266' },
     ],
     gitHubRepo: {
       owner: 'surenpoghosian',
@@ -386,7 +407,7 @@ export const projects: Projects = {
     id: 'network-attached-watering-system',
     name: 'Network attached watering system (LORA)',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/network-attached-watering-system/LoRaWAN.png' },
     startDate: '2021-07-30',
     summary: [
       'Network attached watering system based on ESP32 and LORA',
@@ -408,7 +429,7 @@ export const projects: Projects = {
     id: 'data-corellation-smoothing',
     name: 'Data corellation smoothing',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/data-corellation-smoothing/correlation.jpg' },
     startDate: '2022-01-09',
     summary: [
       'Sensor collected data corellation smoothing methods used for watering system',
@@ -425,13 +446,33 @@ export const projects: Projects = {
     },
     achievements: [],
   },
+  'smart-room-controlled-by-alexa': {
+    id: 'smart-room-controlled-by-alexa',
+    name: 'Smart room',
+    cover: { srcPath: 'projects/smart-room/room.jpg' },
+    startDate: '2019-12-18',
+    summary: [
+      'Smart room controlled by amazon alexa',
+    ],
+    tags: [
+      { name: 'Software' },
+      { name: 'Selenium' },
+      { name: 'Python' },
+      { name: 'QT' },
+    ],
+    gitHubRepo: {
+      owner: 'surenpoghosian',
+      repo: '',
+    },
+    achievements: [],
+  },
   'dumb-data-scraper': {
     id: 'dumb-data-scraper',
     name: 'Dumb data scraper',
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/dumb-data-scraper/monitors.jpeg' },
     startDate: '2020-01-03',
     summary: [
-      'dumb-data-scraper',
+      'Data scraper with GUI based on python, selenium and qt',
     ],
     tags: [
       { name: 'Software' },
@@ -447,9 +488,9 @@ export const projects: Projects = {
   },
   'remote-controlled-rgb-lights': {
     id: 'remote-controlled-rgb-lights',
-    name: 'Remote controlled rgb lights',
+    name: 'Remote controlled RGB lights',
     // srcURL: { url: '' },
-    cover: { srcPath: '' },
+    cover: { srcPath: 'projects/remote-controlled-rgb-lights/rgb.png' },
     startDate: '2020-02-10',
     summary: [
       'remote-controlled-rgb-lights',
