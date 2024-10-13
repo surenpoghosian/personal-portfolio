@@ -113,10 +113,10 @@ export const projects: Projects = {
     id: 'rpi-cluster',
     name: 'Rapsberry Pi cluster',
     // srcURL: { url: '' },
-    cover: { srcPath: 'projects/rpi-cluster/cluster.jpg' },
+    cover: { srcPath: 'projects/rpi-cluster/cover.jpg' },
     startDate: '2024-09-02',
     summary: [
-      'Raspberry Pi cluster',
+      'A combination of four Raspberry Pi 5s, assembled for scalable system experiments with K3S',
     ],
     tags: [
       { name: 'Software' },
@@ -138,7 +138,7 @@ export const projects: Projects = {
     cover: { srcPath: 'projects/jetson/jetson.jpg' },
     startDate: '2024-09-02',
     summary: [
-      'Computer Vision with Nvidia`s developer kit',
+      "Computer Vision with Nvidia's developer kit",
     ],
     tags: [
       { name: 'Software' },
@@ -382,27 +382,27 @@ export const projects: Projects = {
     },
     achievements: [],
   },
-  'wifi-jammer': {
-    id: 'wifi-jammer',
-    name: 'Wifi jammer',
-    // srcURL: { url: '' },
-    cover: { srcPath: 'projects/wifi-jammer/esp8266.jpg' },
-    startDate: '2019-01-10',
-    summary: [
-      'Simple wifi jammer based on ESP32',
-    ],
-    tags: [
-      { name: 'Software' },
-      { name: 'WiFi' },
-      { name: 'Jammer' },
-      { name: 'ESP8266' },
-    ],
-    gitHubRepo: {
-      owner: 'surenpoghosian',
-      repo: '',
-    },
-    achievements: [],
-  },
+  // 'wifi-jammer': {
+  //   id: 'wifi-jammer',
+  //   name: 'Wifi jammer',
+  //   // srcURL: { url: '' },
+  //   cover: { srcPath: 'projects/wifi-jammer/esp8266.jpg' },
+  //   startDate: '2019-01-10',
+  //   summary: [
+  //     'Simple wifi jammer based on ESP32',
+  //   ],
+  //   tags: [
+  //     { name: 'Software' },
+  //     { name: 'WiFi' },
+  //     { name: 'Jammer' },
+  //     { name: 'ESP8266' },
+  //   ],
+  //   gitHubRepo: {
+  //     owner: 'surenpoghosian',
+  //     repo: '',
+  //   },
+  //   achievements: [],
+  // },
   'network-attached-watering-system': {
     id: 'network-attached-watering-system',
     name: 'Network attached watering system (LoRa)',
