@@ -1,6 +1,6 @@
 # surenpoghosyan.dev
 
-My personal [website](https://surenpoghosian.github.io) with a list of my projects that help people learn and blog posts about life, web development, and machine learning.
+My personal [website](https://surenpoghosyan.dev) with a list of my projects that help people learn and blog posts about life, web development, and machine learning.
 
 ## Development
 
@@ -61,4 +61,4 @@ Use [tailwindcss.com](https://tailwindcss.com) to search for available CSS class
 
 ### Custom Domain Support
 
-To serve the [surenpoghosian.github.io](https://surenpoghosian.github.io) web-site on a custom domain [surenpoghosyan.dev](https://surenpoghosyan.dev) make sure that the `public` branch has `CNAME` file in the root folder. For more details read [this](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site).
+To serve the [surenpoghosyan.dev](https://surenpoghosyan.dev) web-site on a custom domain [surenpoghosyan.dev](https://surenpoghosyan.dev) make sure that the `public` branch has `CNAME` file in the root folder. For more details read [this](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site).
