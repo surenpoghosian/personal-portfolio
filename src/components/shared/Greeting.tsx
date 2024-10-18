@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import HyperLink from './HyperLink';
 import type { Link } from '../../types/Link';
