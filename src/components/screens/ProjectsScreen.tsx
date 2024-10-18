@@ -8,9 +8,11 @@ import Badge from '../shared/Badge';
 import Row from '../shared/Row';
 import SEO from '../shared/SEO';
 import ProjectFilters, {
-  sortByStarsDesc, sortByStartDateAsc,
+  sortByStarsDesc,
+  sortByStartDateAsc,
   sortByStartDateDesc,
-  SortOption, supportedSortOptions,
+  SortOption,
+  supportedSortOptions,
 } from '../elements/ProjectFilters';
 import { getGitHubProjectStars, getTotalGetHubProjectStars, projectMapToArray } from '../../utils/project';
 import Stars from '../shared/Stars';
@@ -62,10 +64,10 @@ const projectSorters: ProjectSorters = {
 const getDefaultSortOption = (): SortOption => {
   const defaultOption = sortByStartDateDesc;
   // @ts-ignore
-  const sortFromURL: SortOption = getStringSearchParam(SORT_PARAM_NAME, defaultOption);
-  if (supportedSortOptions.includes(sortFromURL)) {
-    return sortFromURL;
-  }
+  // const sortFromURL: SortOption = getStringSearchParam(SORT_PARAM_NAME, defaultOption);
+  // if (supportedSortOptions.includes(sortFromURL)) {
+  //   return sortFromURL;
+  // }
   return defaultOption;
 };
 
@@ -73,9 +75,8 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
   const { projects } = props;
 
   const [sortBy, setSortBy] = useState<SortOption>(getDefaultSortOption());
-  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>(
-    projectMapToArray(projects),
-  );
+  // eslint-disable-next-line max-len
+  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>(projectMapToArray(projects));
 
   const onSort = (newSortOption: SortOption): void => {
     setSearchParam(SORT_PARAM_NAME, newSortOption);
@@ -92,23 +93,20 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
 
   return (
     <PageLayout>
-      <SEO
-        title="Projects"
-        description="Projects and experiments that help people learn"
-      />
+      <SEO title="Projects" description="Projects and experiments that help people learn" />
       <Row>
         <PageHeader>Projects</PageHeader>
         <Badge className="ml-3 self-start">{projectsNum}</Badge>
       </Row>
-      <Row className="mb-6 justify-between">
-        <ProjectFilters onSort={onSort} sortBy={sortBy} />
-        <Row className="ml-3">
+      {/* <Row className="mb-6 justify-between"> */}
+      {/* <ProjectFilters onSort={onSort} sortBy={sortBy} /> */}
+      {/* <Row className="ml-3">
           <div className="text-sm text-gray-500 mr-1">
             Total stars:
           </div>
           <Stars stars={getTotalGetHubProjectStars(projects)} />
-        </Row>
-      </Row>
+        </Row> */}
+      {/* </Row> */}
       <ProjectsList projects={filteredProjects} />
     </PageLayout>
   );
