@@ -9,7 +9,7 @@ import {
 } from './src/data/siteMetadata';
 
 const gatsbyConfig: GatsbyConfig = {
-  pathPrefix: '/personal-portfolio',
+  pathPrefix: '/',
   siteMetadata,
 
   flags: {
