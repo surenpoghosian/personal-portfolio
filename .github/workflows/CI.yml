@@ -2,17 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]  # Change this if your main branch has a different name
   pull_request:
-    branches: [ master ]
+    branches: [ main ]  # Change this if your main branch has a different name
   schedule:
-    # ┌───────────── minute (0 - 59)
-    # │ ┌───────────── hour (0 - 23)
-    # │ │ ┌───────────── day of the month (1 - 31)
-    # │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
-    # │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
-    # │ │ │ │ │
-    # * * * * *
     - cron: '42 7 * * *'
 
 jobs:
@@ -38,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: npm i
+        run: npm install
 
       - name: Run linting
         run: npm run lint
@@ -67,28 +60,14 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: npm i
+        run: npm install
 
-      - name: Cache Gatsby cache folder
-        uses: actions/cache@v3
+      - name: Build Gatsby
+        run: npm run build  # Ensure your build command generates files in the public folder
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: .cache
-          key: gatsby-cache-folder
-
-      - name: Cache Gatsby public folder
-        uses: actions/cache@v3
-        with:
-          path: public
-          key: gatsby-public-folder
-
-      - name: Deploy
-        run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
-          git remote set-url origin https://${github_token}@github.com/${repository}
-          npm run deploy
-        env:
-          user_name: 'github-actions-bot'
-          user_email: 'github-actions-bot@users.noreply.github.com'
-          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-          repository: ${{ github.repository }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # Path to the folder containing the built site
+          publish_branch: gh-pages  # Branch to publish to
