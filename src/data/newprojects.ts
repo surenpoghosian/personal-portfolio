@@ -179,7 +179,7 @@ export const projects: Projects = {
     id: 'rack-server-for-experiments',
     name: 'Rack Server for experiments',
     // srcURL: { url: '' },
-    cover: { srcPath: 'projects/rack-server-for-experiments/rack_nobg.jpg' },
+    cover: { srcPath: 'projects/rack-server-for-experiments/cover.jpeg' },
     startDate: '2024-09-02',
     summary: [
       'A combination of rpi cluster, jetson and NAS for experiments...',
