@@ -1,0 +1,7 @@
+/*![File hosting app](./assets/demo-31-system-design-sketches-file-hosting.png)*/
+
+/*![Social network](./assets/demo-31-system-design-sketches-social-network.png)*/
+
+/*![Video streaming app](./assets/demo-31-system-design-sketches-video-streaming.png)*/
+
+/*![Web crawler](./assets/demo-31-system-design-sketches-web-crawler.png)*/
