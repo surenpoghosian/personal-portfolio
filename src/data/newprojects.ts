@@ -434,27 +434,28 @@ export const projects: Projects = {
     },
     achievements: [],
   },
-  // 'data-corellation-smoothing': {
-  //   id: 'data-corellation-smoothing',
-  //   name: 'Data corellation smoothing',
-  //   // srcURL: { url: '' },
-  //   cover: { srcPath: 'projects/data-corellation-smoothing/correlation.jpg' },
-  //   startDate: '2022-01-09',
-  //   summary: [
-  //     'Sensor collected data corellation smoothing methods used for watering system',
-  //   ],
-  //   tags: [
-  //     { name: 'Software' },
-  //     { name: 'Correlation' },
-  //     { name: 'Smoothing' },
-  //     { name: 'Senesor' },
-  //   ],
-  //   gitHubRepo: {
-  //     owner: 'surenpoghosian',
-  //     repo: '',
-  //   },
-  //   achievements: [],
-  // },
+  'data-corellation-smoothing': {
+    id: 'data-corellation-smoothing',
+    name: 'Data corellation smoothing',
+    // srcURL: { url: '' },
+    cover: { srcPath: 'projects/data-corellation-smoothing/correlation.jpg' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2022/data-corellation-smoothing/' },
+    startDate: '2022-01-09',
+    summary: [
+      'Sensor collected data corellation smoothing methods used for watering system',
+    ],
+    tags: [
+      { name: 'Software' },
+      { name: 'Correlation' },
+      { name: 'Smoothing' },
+      { name: 'Senesor' },
+    ],
+    gitHubRepo: {
+      owner: 'surenpoghosian',
+      repo: '',
+    },
+    achievements: [],
+  },
   'smart-room-controlled-by-alexa': {
     id: 'smart-room-controlled-by-alexa',
     name: 'Smart room',
