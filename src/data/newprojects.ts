@@ -223,7 +223,7 @@ export const projects: Projects = {
     name: 'TV RC + Arduino',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/remote-control-arduino/remote.jpg' },
-    demoURL: { url: 'https://youtu.be/cZE1Zn3m0Ws' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/mastering-arduino/#extending-the-project-with-a-remote-control' },
     startDate: '2018-10-01',
     summary: [
       'remote-control-arduino',
@@ -246,7 +246,7 @@ export const projects: Projects = {
     name: 'Tesla Coil',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/tesla-coil/coild.png' },
-    demoURL: { url: 'https://youtu.be/i0Y1JH6p67I?t=236' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2017/tesla-coil/' },
     startDate: '2017-06-01',
     summary: [
       'Self-made Tesla coil',
@@ -266,7 +266,7 @@ export const projects: Projects = {
     name: 'Laboratory Power Supply v1',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/laboratory-power-supply-v1/powersupply.jpg' },
-    demoURL: { url: 'https://www.youtube.com/watch?v=uAPGrlU4P-U' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2019/laboratory-power-supply/#power-supply-1-from-220v-to-15v36v' },
     startDate: '2019-01-10',
     summary: [
       'Self-made laboratory power supply',
@@ -287,7 +287,7 @@ export const projects: Projects = {
     name: 'Laboratory Power Supply v2',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/laboratory-power-supply-v2/power.png' },
-    demoURL: { url: 'https://www.youtube.com/watch?v=S6boi-lhmlM' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2019/laboratory-power-supply/#power-supply-2-regulating-any-input-to-15v36v' },
     startDate: '2019-01-10',
     summary: [
       'Self-made laboratory power supply',
@@ -308,7 +308,7 @@ export const projects: Projects = {
     name: 'Bluetooth + Arduino',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/bluetooth-arduino/bluetooth.png' },
-    demoURL: { url: 'https://youtu.be/uHIsY8Q9Gvs?t=29' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/mastering-arduino/#automating-my-table-light-with-arduino-and-bluetooth' },
     startDate: '2018-10-01',
     summary: [
       'Arduino controlled over bluetooth and a smart phone',
@@ -331,7 +331,7 @@ export const projects: Projects = {
     name: 'Smart door lock with passcode',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/door-lock-with-passcode/doorlock.png' },
-    demoURL: { url: 'https://youtu.be/GYR2Z1vL05A' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/door-lock-with-passcode/' },
     startDate: '2018-11-01',
     summary: [
       'Self-made door lock with passcode based on arduino',
@@ -354,7 +354,7 @@ export const projects: Projects = {
     name: 'Remote controlled rocket (firework) launcher',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/remote-rocket-launcher/rocketlauncher.png' },
-    demoURL: { url: 'https://www.youtube.com/watch?v=8fIDrBHEn0U' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/firework-launcher/#designing-the-remote-controlled-firework-launcher' },
     startDate: '2018-12-01',
     summary: [
       'Firework launcher, made for safely lighting fireworks',
@@ -375,7 +375,7 @@ export const projects: Projects = {
     name: 'Wired rocket (firework) launcher',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/wired-rocket-launcher/wiredlaunsher.png' },
-    demoURL: { url: 'https://youtu.be/x2Hw8JPNVwU?t=27' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/firework-launcher/#designing-the-remote-controlled-firework-launcher' },
     startDate: '2018-12-01',
     summary: [
       'wired-rocket-launcher',
@@ -439,6 +439,7 @@ export const projects: Projects = {
     name: 'Data corellation smoothing',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/data-corellation-smoothing/correlation.jpg' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2022/data-corellation-smoothing/' },
     startDate: '2022-01-09',
     summary: [
       'Sensor collected data corellation smoothing methods used for watering system',
