@@ -114,6 +114,7 @@ export const projects: Projects = {
     name: 'Rapsberry Pi cluster',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/rpi-cluster/cover.jpg' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/rpi-cluster/' },
     startDate: '2024-09-02',
     summary: [
       'A combination of four Raspberry Pi 5s, assembled for scalable system experiments with K3S',
@@ -136,6 +137,7 @@ export const projects: Projects = {
     name: 'Computer vision - edge computing',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/jetson/jetson.jpg' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/jetson/' },
     startDate: '2024-09-02',
     summary: [
       "Computer Vision with Nvidia's developer kit",
@@ -158,6 +160,7 @@ export const projects: Projects = {
     name: 'Network Attached Storage (NAS)',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/NAS/raspberry.jpg' },
+    demoURL: { url: 'https://asd.asd' },
     startDate: '2024-10-02',
     summary: [
       'Self-made Network Attached Storage based on Raspberry Pi 5 and a 20TB of HDDs',
@@ -180,6 +183,7 @@ export const projects: Projects = {
     name: 'Rack Server for experiments',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/rack-server-for-experiments/cover.jpeg' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/rack-server-for-experiments/' },
     startDate: '2024-09-02',
     summary: [
       'A combination of rpi cluster, jetson and NAS for experiments...',
