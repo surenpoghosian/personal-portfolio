@@ -160,7 +160,7 @@ export const projects: Projects = {
     name: 'Network Attached Storage (NAS)',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/NAS/raspberry.jpg' },
-    demoURL: { url: 'https://asd.asd' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/nas/' },
     startDate: '2024-10-02',
     summary: [
       'Self-made Network Attached Storage based on Raspberry Pi 5 and a 20TB of HDDs',
