@@ -223,7 +223,7 @@ export const projects: Projects = {
     name: 'TV RC + Arduino',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/remote-control-arduino/remote.jpg' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/mastering-arduino/#automating-my-table-light-with-arduino-and-bluetooth' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/mastering-arduino/#extending-the-project-with-a-remote-control' },
     startDate: '2018-10-01',
     summary: [
       'remote-control-arduino',
