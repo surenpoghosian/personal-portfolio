@@ -198,9 +198,8 @@ export const projects: Projects = {
   'fpv-drone': {
     id: 'fpv-drone',
     name: 'FPV racing drone',
-    // srcURL: { url: 'https://youtu.be/j8NpvrlGYl8?t=155' },
     cover: { srcPath: 'projects/fpv-drone/drn.jpg' },
-    demoURL: { url: 'https://youtu.be/j8NpvrlGYl8?t=155' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2020/fpv-drone/' },
     startDate: '2020-05-01',
     summary: [
       'Self-made FPV racing drone',
@@ -417,6 +416,7 @@ export const projects: Projects = {
     name: 'Network attached watering system (LoRa)',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/network-attached-watering-system/LoRaWAN.png' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2021/network-attached-watering-system/' },
     startDate: '2021-07-30',
     summary: [
       'Network attached watering system based on ESP32 and LoRa',
@@ -458,8 +458,9 @@ export const projects: Projects = {
   },
   'smart-room-controlled-by-alexa': {
     id: 'smart-room-controlled-by-alexa',
-    name: 'Smart room',
+    name: 'The room of IoT',
     cover: { srcPath: 'projects/smart-room/room.jpg' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2020/smart-room/#creating-smart-home-solutions-with-amazon-alexa-and-esp32' },
     startDate: '2019-12-18',
     summary: [
       'Smart room controlled by amazon alexa',
@@ -502,6 +503,7 @@ export const projects: Projects = {
     name: 'Remote controlled RGB lights',
     // srcURL: { url: '' },
     cover: { srcPath: 'projects/remote-controlled-rgb-lights/rgb.png' },
+    demoURL: { url: 'https://surenpoghosyan.dev/blog/2020/smart-room/#remote-controlled-rgb-lights' },
     startDate: '2020-02-10',
     summary: [
       'remote-controlled-rgb-lights',
