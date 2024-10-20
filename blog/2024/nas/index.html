@@ -75,6 +75,147 @@
         decoding="async"
       />
     </span></span>
+<p>In this post, I’ll walk you through how I built a powerful and scalable 20TB network-attached storage (NAS) system using a Raspberry Pi 5, Docker, and Nextcloud. With the help of Docker and Docker Compose, setting up this NAS was straightforward and flexible. If you want to create your own personal cloud storage that’s accessible from anywhere, I’ll show you how I did it.</p>
+<h2 id="what-i-used" style="position:relative">What I Used<a href="#what-i-used" aria-label="what i used permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>Here are the main components I used for this project:</p>
+<ul>
+<li><strong>Raspberry Pi 5 (8GB RAM)</strong> - Running Ubuntu 24 LTS Server.</li>
+<li><strong>5-bay HDD enclosure</strong> - This is where I connected my hard drives.</li>
+<li><strong>Three hard drives</strong> – A 6TB Western Digital Red, a 6TB Western Digital Blue, and an 8TB Seagate, giving me a total of 20TB of storage.</li>
+<li><strong>Docker and Docker Compose</strong> – To simplify the deployment of Nextcloud and the required services.</li>
+<li><strong>Nginx</strong> – As a reverse proxy for handling web traffic.</li>
+</ul>
+<h3 id="why-docker-and-docker-compose" style="position:relative">Why Docker and Docker Compose?<a href="#why-docker-and-docker-compose" aria-label="why docker and docker compose permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h3>
+<p>Using Docker allowed me to isolate all the services (Nextcloud, the database, etc.) in containers, making them easier to manage and deploy. With Docker Compose, I was able to define and start the entire setup with one command by simply configuring the <strong>docker-compose.yml</strong> file. This setup also makes it easier to update or migrate in the future.</p>
+<h2 id="setting-up-the-raspberry-pi" style="position:relative">Setting Up the Raspberry Pi<a href="#setting-up-the-raspberry-pi" aria-label="setting up the raspberry pi permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>I started by installing Ubuntu 24 LTS Server on the Raspberry Pi. I flashed the Ubuntu image onto an SD card using Balena Etcher and booted up the Raspberry Pi. Once connected to my network, I accessed the Pi using SSH from my main computer.</p>
+<p>After logging in, I updated the system:</p>
+<span><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">apt</span> upgrade</code></pre></div></span>
+<h2 id="installing-docker-and-docker-compose" style="position:relative">Installing Docker and Docker Compose<a href="#installing-docker-and-docker-compose" aria-label="installing docker and docker compose permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>To simplify the deployment of Nextcloud, I installed Docker and Docker Compose on the Raspberry Pi:</p>
+<span><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> docker.io
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">docker-compose</span></code></pre></div></span>
+<p>Also make sure the Docker service was running:</p>
+<span><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl start <span class="token function">docker</span>
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token function">docker</span></code></pre></div></span>
+<h2 id="mounting-the-hard-drives" style="position:relative">Mounting the Hard Drives<a href="#mounting-the-hard-drives" aria-label="mounting the hard drives permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>I connected the 5-bay HDD enclosure via USB to the Raspberry Pi, which held the three hard drives (6TB WD Red, 6TB WD Blue, and 8TB Seagate). After connecting, I mounted them manually using the following steps:</p>
+<span><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> /mnt/hdd1 /mnt/hdd2 /mnt/hdd3
+<span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda1 /mnt/hdd1
+<span class="token function">sudo</span> <span class="token function">mount</span> /dev/sdb1 /mnt/hdd2
+<span class="token function">sudo</span> <span class="token function">mount</span> /dev/sdc1 /mnt/hdd3</code></pre></div></span>
+<p>To ensure the drives automatically mount on reboot, I added the relevant entries in the /etc/fstab file.</p>
+<h2 id="creating-the-docker-compose-file" style="position:relative">Creating the Docker Compose File<a href="#creating-the-docker-compose-file" aria-label="creating the docker compose file permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>Next, I created the docker-compose.yml file to define the services needed for Nextcloud. Here’s the content of the file:</p>
+<span><div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">db</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> mariadb
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> db_data<span class="token punctuation">:</span>/var/lib/mysql
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">MYSQL_ROOT_PASSWORD</span><span class="token punctuation">:</span> rootpassword
+      <span class="token key atrule">MYSQL_DATABASE</span><span class="token punctuation">:</span> nextcloud
+      <span class="token key atrule">MYSQL_USER</span><span class="token punctuation">:</span> ncuser
+      <span class="token key atrule">MYSQL_PASSWORD</span><span class="token punctuation">:</span> password
+
+  <span class="token key atrule">app</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nextcloud
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"8080:80"</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nextcloud_data<span class="token punctuation">:</span>/var/www/html
+      <span class="token punctuation">-</span> /mnt/hdd1<span class="token punctuation">:</span>/mnt/hdd1
+      <span class="token punctuation">-</span> /mnt/hdd2<span class="token punctuation">:</span>/mnt/hdd2
+      <span class="token punctuation">-</span> /mnt/hdd3<span class="token punctuation">:</span>/mnt/hdd3
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">MYSQL_PASSWORD</span><span class="token punctuation">:</span> password
+      <span class="token key atrule">MYSQL_DATABASE</span><span class="token punctuation">:</span> nextcloud
+      <span class="token key atrule">MYSQL_USER</span><span class="token punctuation">:</span> ncuser
+      <span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> db
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> db
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">db_data</span><span class="token punctuation">:</span>
+  nextcloud_data<span class="token punctuation">:</span></code></pre></div></span>
+<h3 id="this-file-defines-two-main-services" style="position:relative">This file defines two main services:<a href="#this-file-defines-two-main-services" aria-label="this file defines two main services permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h3>
+<ul>
+<li><strong>db:</strong> The MariaDB database container.</li>
+<li><strong>app:</strong> The Nextcloud application, connected to the database and exposing port 8080 on the Pi for access.</li>
+</ul>
+<h2 id="setting-up-nginx-as-a-reverse-proxy" style="position:relative">Setting Up Nginx as a Reverse Proxy<a href="#setting-up-nginx-as-a-reverse-proxy" aria-label="setting up nginx as a reverse proxy permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>To manage traffic and secure the connection, I set up Nginx as a reverse proxy. I created an nginx.conf file to forward traffic from port 80 and handle SSL:</p>
+<span><div class="gatsby-highlight" data-language="nginx"><pre class="language-nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span> your-domain.com</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">proxy_pass</span> http://localhost:8080</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-Proto <span class="token variable">$scheme</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span> <span class="token number">443</span> ssl</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span> your-domain.com</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">ssl_certificate</span> /etc/nginx/ssl/nginx.crt</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_certificate_key</span> /etc/nginx/ssl/nginx.key</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">proxy_pass</span> http://localhost:8080</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-Proto <span class="token variable">$scheme</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div></span>
+<p>After creating the config, I installed Nginx and enabled the configuration:</p>
+<span><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> nginx
+<span class="token function">sudo</span> systemctl start nginx
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> nginx</code></pre></div></span>
+<h2 id="running-the-docker-containers" style="position:relative">Running the Docker Containers<a href="#running-the-docker-containers" aria-label="running the docker containers permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>With everything set up, I ran the following command to start the Docker containers:</p>
+<span><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span></code></pre></div></span>
+<p>Docker pulled the necessary images and set up the containers. Now, Nextcloud and MariaDB were running in isolated containers.</p>
+<h2 id="accessing-nextcloud-and-setting-up-ssl" style="position:relative">Accessing Nextcloud and Setting Up SSL<a href="#accessing-nextcloud-and-setting-up-ssl" aria-label="accessing nextcloud and setting up ssl permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>Once the containers were up and running, I accessed Nextcloud by navigating to the Raspberry Pi’s IP address in my browser (e.g., http://your-pi-ip:8080). From there, I completed the web-based setup and pointed Nextcloud to store files on the mounted HDDs.</p>
+<span><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 77.2%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwACBP/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAF25ljMMf/EABkQAAIDAQAAAAAAAAAAAAAAAAEDAAIEE//aAAgBAQABBQKiwQVVnOsXpUAdaIdSZ//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABsQAAIBBQAAAAAAAAAAAAAAAAChAQIQETEy/9oACAEBAAY/AovGakdI2j//xAAcEAADAQACAwAAAAAAAAAAAAAAARExQVGRobH/2gAIAQEAAT8htCWdEefB3z0hHQiXIi35jT2P/9oADAMBAAIAAwAAABC4/wD/xAAWEQEBAQAAAAAAAAAAAAAAAAAAASH/2gAIAQMBAT8QjH//xAAXEQADAQAAAAAAAAAAAAAAAAAAESEB/9oACAECAQE/ENbhT//EAB8QAAICAQQDAAAAAAAAAAAAAAERACFhQVFx8JHR4f/aAAgBAQABPxAxXASEacT5n0gCL0xCWiCNloYlY3ptGEefP//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Prototype"
+        title=""
+        src="/static/b2a26428a4c68260195d80be7638139a/a2510/nextcloud.jpg"
+        srcset="/static/b2a26428a4c68260195d80be7638139a/0479a/nextcloud.jpg 250w,
+/static/b2a26428a4c68260195d80be7638139a/41099/nextcloud.jpg 500w,
+/static/b2a26428a4c68260195d80be7638139a/a2510/nextcloud.jpg 1000w,
+/static/b2a26428a4c68260195d80be7638139a/c58a3/nextcloud.jpg 1500w,
+/static/b2a26428a4c68260195d80be7638139a/3acf0/nextcloud.jpg 2000w,
+/static/b2a26428a4c68260195d80be7638139a/9568a/nextcloud.jpg 3024w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></span>
+<p>I also secured my setup by installing Let’s Encrypt to enable HTTPS with a free SSL certificate:</p>
+<span><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> certbot python3-certbot-nginx
+<span class="token function">sudo</span> certbot <span class="token parameter variable">--nginx</span></code></pre></div></span>
+<h2 id="why-this-setup-works-for-me" style="position:relative">Why This Setup Works for Me<a href="#why-this-setup-works-for-me" aria-label="why this setup works for me permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>With Docker and Docker Compose, managing the NAS is much simpler. All the services (Nextcloud, database, etc.) are contained, and if I ever need to update or migrate the setup, it’s as easy as modifying the docker-compose.yml file. The 20TB of storage provided by the three hard drives gives me plenty of room for file storage, and using Nextcloud allows me to access these files from anywhere in the world.</p>
 <span><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
@@ -100,8 +241,11 @@
         decoding="async"
       />
     </span></span>
+<p>It’s an affordable way to create your own cloud storage, with full control over your data. I hope this guide helps you set up your own NAS!</p>
 <p>Links:</p>
 <ul>
+<li><a href="https://github.com/nextcloud">Nextcloud github</a></li>
+<li><a href="https://github.com/nextcloud/all-in-one#nextcloud-all-in-one">Nextcloud docker</a></li>
 <li><a href="https://www.amazon.com/dp/B0CPWH8FL9?ref=ppx_yo2ov_dt_b_fed_asin_title&amp;th=1">Raspberry Pi 5</a></li>
 <li><a href="https://www.amazon.com/dp/B0D1JYTXSS?ref=ppx_yo2ov_dt_b_fed_asin_title">Raspberry case</a></li>
 <li><a href="https://www.amazon.com/dp/B0D1JYTXSS?ref=ppx_yo2ov_dt_b_fed_asin_title">Raspberry cooler</a></li>
@@ -123,6 +267,6 @@
           <script
             id="gatsby-chunk-mapping"
           >
-            window.___chunkMapping="{\"app\":[\"/app-eda97f96803760f965b6.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-26e4aa32181e14a224b1.js\"],\"component---src-pages-blog-tsx\":[\"/component---src-pages-blog-tsx-37f8474d47d9d110bb05.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-d3a7cd37c16ed5e5ebfd.js\"],\"component---src-pages-projects-tsx\":[\"/component---src-pages-projects-tsx-7dc795c18239ff36112b.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx-62853d107a9fe77a20f6.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx-79ce8e27e117d60cffd7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx-b6134ea5f23eb6efb8a8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx-fbdd06b08e099db159e7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx-420ba5479eac07b3bbb8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx-d0522b4f233a19facee2.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx-073a33b0d57b6e8c4d68.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx-5db87dad0a19bc551044.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx-4aaf45cd435795da2adb.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx-ef0d40014f5085eb48fd.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx-f82a8712ac85de179f3a.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx-df252cbe17823606702f.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx-b34a33bf7170de026f14.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx-47e7bceec8dff3d7b153.js\"],\"component---src-templates-project-tsx\":[\"/component---src-templates-project-tsx-ce75dde3e7986ff26caa.js\"]}";
+            window.___chunkMapping="{\"app\":[\"/app-eda97f96803760f965b6.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-26e4aa32181e14a224b1.js\"],\"component---src-pages-blog-tsx\":[\"/component---src-pages-blog-tsx-37f8474d47d9d110bb05.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-d3a7cd37c16ed5e5ebfd.js\"],\"component---src-pages-projects-tsx\":[\"/component---src-pages-projects-tsx-7dc795c18239ff36112b.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx-62853d107a9fe77a20f6.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx-79ce8e27e117d60cffd7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx-b6134ea5f23eb6efb8a8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx-fbdd06b08e099db159e7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx-420ba5479eac07b3bbb8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx-d0522b4f233a19facee2.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx-073a33b0d57b6e8c4d68.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx-5db87dad0a19bc551044.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx-4aaf45cd435795da2adb.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx-ef0d40014f5085eb48fd.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx-f82a8712ac85de179f3a.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx-8e8803db63b3e95d85a1.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx-b34a33bf7170de026f14.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx-47e7bceec8dff3d7b153.js\"],\"component---src-templates-project-tsx\":[\"/component---src-templates-project-tsx-ce75dde3e7986ff26caa.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="63544c9be2e16a60e4ce";</script><script src="/webpack-runtime-09543ee3d699df2c7049.js" async></script><script src="/framework-5423073ea7ad556366d6.js" async></script><script src="/app-eda97f96803760f965b6.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="9cf344fa6b27fc682966";</script><script src="/webpack-runtime-f6b838f0dd9a68eca644.js" async></script><script src="/framework-5423073ea7ad556366d6.js" async></script><script src="/app-eda97f96803760f965b6.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
