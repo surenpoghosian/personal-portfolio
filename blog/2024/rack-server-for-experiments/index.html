@@ -75,8 +75,8 @@
         decoding="async"
       />
     </span></span>
-<!-- -->
-<!-- -->
+<p>This project is all about building a practical and organized 6U rack server for experimenting with different hardware and software setups. Whether you want to work on distributed systems, network storage, or AI tasks, having a reliable setup helps keep things running smoothly. In this post, I’ll share how I put together a compact, multi-functional rack server that includes several key components for different kinds of tech projects.</p>
+<h3 id="raspberry-pi-cluster" style="position:relative">Raspberry Pi Cluster<a href="#raspberry-pi-cluster" aria-label="raspberry pi cluster permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h3>
 <span><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
@@ -102,33 +102,8 @@
         decoding="async"
       />
     </span></span>
-<!-- -->
-<!-- -->
-<span><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 56.400000000000006%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMBBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHuzsQ0v//EABgQAQADAQAAAAAAAAAAAAAAAAECAxEg/9oACAEBAAEFApOBaLx//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGBAAAgMAAAAAAAAAAAAAAAAAABEBIJH/2gAIAQEABj8CEpyv/8QAGhABAAEFAAAAAAAAAAAAAAAAAREAICFRgf/aAAgBAQABPyEZmeFFxl2y3//aAAwDAQACAAMAAAAQtw//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAwEBPxCn/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGBABAQEBAQAAAAAAAAAAAAAAARGRACD/2gAIAQEAAT8Qg5FkRc4kFUEDU8//2Q=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="Prototype"
-        title=""
-        src="/static/38a90711c6e8a15cd33632b701fbf268/a2510/tik.jpg"
-        srcset="/static/38a90711c6e8a15cd33632b701fbf268/0479a/tik.jpg 250w,
-/static/38a90711c6e8a15cd33632b701fbf268/41099/tik.jpg 500w,
-/static/38a90711c6e8a15cd33632b701fbf268/a2510/tik.jpg 1000w,
-/static/38a90711c6e8a15cd33632b701fbf268/eea4a/tik.jpg 1280w"
-        sizes="(max-width: 1000px) 100vw, 1000px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></span>
-<!-- -->
-<!-- -->
+<p>The rack server includes a <a href="https://surenpoghosyan.dev/blog/2024/rpi-cluster/">cluster of Raspberry Pi 5 boards</a>. These are small but powerful computers that, when connected, can run distributed applications. This setup allows you to experiment with different projects, from managing web apps to testing Kubernetes (K3S). Each Raspberry Pi is equipped with an SSD for better performance and storage.</p>
+<h3 id="network-attached-storage-nas" style="position:relative">Network-Attached Storage (NAS)<a href="#network-attached-storage-nas" aria-label="network attached storage nas permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h3>
 <span><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
@@ -154,8 +129,8 @@
         decoding="async"
       />
     </span></span>
-<!-- -->
-<!-- -->
+<p>I’ve also added a <a href="https://surenpoghosyan.dev/blog/2024/nas/">NAS</a> system to the rack, using a 5-bay HDD enclosure connected to one of the Raspberry Pis. This gives me a solid 20TB of storage, making it ideal for backing up files, storing media, or even hosting a personal cloud with Nextcloud. The mix of WD Red, WD Blue, and Seagate hard drives ensures there’s plenty of room and reliability.</p>
+<h3 id="jetson-orin-nano" style="position:relative">Jetson Orin Nano<a href="#jetson-orin-nano" aria-label="jetson orin nano permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h3>
 <span><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
@@ -181,8 +156,8 @@
         decoding="async"
       />
     </span></span>
-<!-- -->
-<!-- -->
+<p>The <a href="https://surenpoghosyan.dev/blog/2024/jetson/">Jetson Orin Nano</a> is part of this build too. It’s mainly used for computer vision and AI experiments. The Jetson is powerful enough for real-time data processing tasks and can handle more demanding machine learning applications. I chose a Logitech USB camera for easy integration, and it’s been working well with the Jetson for basic tests.</p>
+<h3 id="gmktek-mini-pc-with-intel-n100" style="position:relative">GMKTek Mini PC with Intel N100<a href="#gmktek-mini-pc-with-intel-n100" aria-label="gmktek mini pc with intel n100 permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h3>
 <span><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
@@ -208,8 +183,37 @@
         decoding="async"
       />
     </span></span>
-<!-- -->
-<!-- -->
+<p>At the center of the rack is the GMKTek mini PC. It’s a compact machine with 16GB of RAM and a 1TB SSD, running Ubuntu. This PC serves as a central hub, allowing me to manage the other devices, monitor the network, and test various setups.</p>
+<h3 id="power-and-networking" style="position:relative">Power and Networking<a href="#power-and-networking" aria-label="power and networking permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h3>
+<span><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.400000000000006%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMBBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHuzsQ0v//EABgQAQADAQAAAAAAAAAAAAAAAAECAxEg/9oACAEBAAEFApOBaLx//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGBAAAgMAAAAAAAAAAAAAAAAAABEBIJH/2gAIAQEABj8CEpyv/8QAGhABAAEFAAAAAAAAAAAAAAAAAREAICFRgf/aAAgBAQABPyEZmeFFxl2y3//aAAwDAQACAAMAAAAQtw//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAwEBPxCn/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGBABAQEBAQAAAAAAAAAAAAAAARGRACD/2gAIAQEAAT8Qg5FkRc4kFUEDU8//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Prototype"
+        title=""
+        src="/static/38a90711c6e8a15cd33632b701fbf268/a2510/tik.jpg"
+        srcset="/static/38a90711c6e8a15cd33632b701fbf268/0479a/tik.jpg 250w,
+/static/38a90711c6e8a15cd33632b701fbf268/41099/tik.jpg 500w,
+/static/38a90711c6e8a15cd33632b701fbf268/a2510/tik.jpg 1000w,
+/static/38a90711c6e8a15cd33632b701fbf268/eea4a/tik.jpg 1280w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></span>
+<p>I organized the wiring by adding a power unit with switches and plugs within the rack. This helps keep the cables tidy and ensures that each device has a reliable power source. For networking, I used a Mikrotik 750Gr3 router to create a private network for all the devices. This setup gives me full control over the network, making it secure and isolated for testing purposes.</p>
+<h2 id="why-build-a-rack-server" style="position:relative">Why Build a Rack Server?<a href="#why-build-a-rack-server" aria-label="why build a rack server permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>A rack server like this provides a dedicated environment for trying out different technologies. It’s more efficient to have all the hardware in one place, rather than scattered around. Plus, the organization helps when troubleshooting or upgrading parts.</p>
+<p>If you’re interested in experimenting with hardware or software projects, building a rack like this one gives you the flexibility to test and learn in a structured way. Whether you’re running distributed systems, playing with AI, or just want a personal cloud setup, this project provides a solid base for all of it.</p>
+<h2 id="conclusion" style="position:relative">Conclusion<a href="#conclusion" aria-label="conclusion permalink" class="gatsby-remark-autolink-header-anchor after"><span><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></span></a></h2>
+<p>This 6U rack server project is a hands-on approach to managing and experimenting with hardware. It’s not only a functional setup but also a learning tool. By putting together different pieces like the Raspberry Pi cluster, NAS, and Jetson Orin Nano, you create a space for testing and innovation. It’s a straightforward, flexible solution that works for a variety of tech projects.</p>
 <span><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
@@ -252,6 +256,6 @@
           <script
             id="gatsby-chunk-mapping"
           >
-            window.___chunkMapping="{\"app\":[\"/app-eda97f96803760f965b6.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-26e4aa32181e14a224b1.js\"],\"component---src-pages-blog-tsx\":[\"/component---src-pages-blog-tsx-37f8474d47d9d110bb05.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-d3a7cd37c16ed5e5ebfd.js\"],\"component---src-pages-projects-tsx\":[\"/component---src-pages-projects-tsx-7dc795c18239ff36112b.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx-62853d107a9fe77a20f6.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx-79ce8e27e117d60cffd7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx-b6134ea5f23eb6efb8a8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx-fbdd06b08e099db159e7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx-420ba5479eac07b3bbb8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx-d0522b4f233a19facee2.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx-073a33b0d57b6e8c4d68.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx-5db87dad0a19bc551044.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx-4aaf45cd435795da2adb.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx-ef0d40014f5085eb48fd.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx-901ffc839e45ecd729a4.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx-1046de5bd3a11d12836c.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx-2da9bb2af2dcf0e25fef.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx-3690d97de6bb7b5ae13d.js\"],\"component---src-templates-project-tsx\":[\"/component---src-templates-project-tsx-ce75dde3e7986ff26caa.js\"]}";
+            window.___chunkMapping="{\"app\":[\"/app-eda97f96803760f965b6.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-26e4aa32181e14a224b1.js\"],\"component---src-pages-blog-tsx\":[\"/component---src-pages-blog-tsx-37f8474d47d9d110bb05.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-d3a7cd37c16ed5e5ebfd.js\"],\"component---src-pages-projects-tsx\":[\"/component---src-pages-projects-tsx-7dc795c18239ff36112b.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2017-tesla-coil-index-mdx-62853d107a9fe77a20f6.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-door-lock-with-passcode-index-mdx-79ce8e27e117d60cffd7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-firework-launcher-index-mdx-b6134ea5f23eb6efb8a8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2018-mastering-arduino-index-mdx-fbdd06b08e099db159e7.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2019-laboratory-power-supply-index-mdx-420ba5479eac07b3bbb8.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-fpv-drone-index-mdx-d0522b4f233a19facee2.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2020-smart-room-index-mdx-073a33b0d57b6e8c4d68.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2021-network-attached-watering-system-index-mdx-5db87dad0a19bc551044.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2022-data-corellation-smoothing-index-mdx-4aaf45cd435795da2adb.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2023-software-creations-index-mdx-ef0d40014f5085eb48fd.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-jetson-index-mdx-901ffc839e45ecd729a4.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-nas-index-mdx-1046de5bd3a11d12836c.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rack-server-for-experiments-index-mdx-d9a912d20870e4a9f28b.js\"],\"component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx\":[\"/component---src-templates-post-tsx-content-file-path-src-posts-2024-rpi-cluster-index-mdx-3690d97de6bb7b5ae13d.js\"],\"component---src-templates-project-tsx\":[\"/component---src-templates-project-tsx-ce75dde3e7986ff26caa.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="64f4090ff601b659d189";</script><script src="/webpack-runtime-c219669c2ebf9cfc95bf.js" async></script><script src="/framework-5423073ea7ad556366d6.js" async></script><script src="/app-eda97f96803760f965b6.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="464a11e04391b5d3d6ce";</script><script src="/webpack-runtime-74f0b9790c253f2379fa.js" async></script><script src="/framework-5423073ea7ad556366d6.js" async></script><script src="/app-eda97f96803760f965b6.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
