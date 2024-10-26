@@ -23,10 +23,23 @@ To start, I integrated the ESP32 modules with Amazon Alexa. This allowed me to c
 
 Setting up the connection was an exciting challenge. I had to write code for the ESP32 that communicates with Alexa. I used a library called [Espalexa](https://github.com/Aircoookie/Espalexa) to pair the ESP module with alexa. Once everything was connected, I could control my devices easily and quickly with just my voice.
 
+## Curtain Electronics Schema
+
+The curtain mechanism is designed with two wheels, one at each end of the curtain rod. The left wheel is connected to a motor, which allows it to rotate and open or close the curtain smoothly. This motor is powered and controlled by an ESP32, a small but powerful microcontroller.
+
 <span style={{ color: 'white' }}>.</span>
 ![Prototype](./assets/curtain.jpeg)
 
-The mechanism I designed uses two wheels placed at each end of the curtain holder. The left wheel is powered by a motor connected to an ESP32, which is also linked to the home’s Wi-Fi network.
+The ESP32 is connected to a motor driver, which is responsible for controlling the motor that moves the curtains. The motor driver acts as a bridge between the ESP32 and the motor, allowing safe and controlled power delivery. The ESP32 sends signals to the motor driver, which then adjusts the motor’s speed and direction, smoothly opening or closing the curtains as needed.
+
+![Prototype](./assets/sketch2.jpg)
+
+
+## Table light schema
+
+The table light design uses an RGB strip light that is controlled by an ESP32. This setup is connected to the home’s Wi-Fi network, so I can reach it using the Amazon Alexa app. With this, I can easily change the colors and brightness of the lights, making my workspace more lively. 
+
+![Prototype](./assets/sketch1.jpg)
 
 ## Remote-Controlled RGB Lights
 
