@@ -18,6 +18,9 @@ export const profile: Profile = {
   tags: [
     { name: 'Typescript' },
     { name: 'React' },
+    { name: 'iOS' },
+    { name: 'UIKit' },
+    { name: 'SwiftUI' },
   ],
   socialLinks,
 };
