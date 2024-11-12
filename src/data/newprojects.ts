@@ -91,7 +91,6 @@ export const projects: Projects = {
     id: 'magic-qr',
     name: 'Magic QR',
     srcURL: { url: 'https://github.com/surenpoghosian/MagicQR' },
-    demoURL: { url: 'https://github.com/surenpoghosian/MagicQR' },
     cover: { srcPath: 'projects/magic-qr/qr.jpg' },
     startDate: '2024-01-13',
     summary: [
@@ -112,9 +111,8 @@ export const projects: Projects = {
   'rpi-cluster': {
     id: 'rpi-cluster',
     name: 'Rapsberry Pi cluster',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/rpi-cluster/cover.jpg' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/rpi-cluster/' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2024/rpi-cluster/' },
     startDate: '2024-09-02',
     summary: [
       'A combination of four Raspberry Pi 5s, assembled for scalable system experiments with K3S',
@@ -135,9 +133,8 @@ export const projects: Projects = {
   jetson: {
     id: 'jetson',
     name: 'Computer vision - edge computing',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/jetson/jetson.jpg' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/jetson/' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2024/jetson/' },
     startDate: '2024-09-02',
     summary: [
       "Computer Vision with Nvidia's developer kit",
@@ -158,9 +155,8 @@ export const projects: Projects = {
   NAS: {
     id: 'network-attached-storage',
     name: 'Network Attached Storage (NAS)',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/NAS/raspberry.jpg' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/nas/' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2024/nas/' },
     startDate: '2024-10-02',
     summary: [
       'Self-made Network Attached Storage based on Raspberry Pi 5 and a 20TB of HDDs',
@@ -181,9 +177,8 @@ export const projects: Projects = {
   'rack-server-for-experiments': {
     id: 'rack-server-for-experiments',
     name: 'Rack Server for experiments',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/rack-server-for-experiments/cover.jpeg' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2024/rack-server-for-experiments/' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2024/rack-server-for-experiments/' },
     startDate: '2024-09-02',
     summary: [
       'A combination of rpi cluster, jetson and NAS for experiments...',
@@ -203,7 +198,7 @@ export const projects: Projects = {
     id: 'fpv-drone',
     name: 'FPV racing drone',
     cover: { srcPath: 'projects/fpv-drone/drn.jpg' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2020/fpv-drone/' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2020/fpv-drone/' },
     startDate: '2020-05-01',
     summary: [
       'Self-made FPV racing drone',
@@ -224,7 +219,6 @@ export const projects: Projects = {
   'remote-control-arduino': {
     id: 'remote-control-arduino',
     name: 'TV RC + Arduino',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/remote-control-arduino/remote.jpg' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/mastering-arduino/#extending-the-project-with-a-remote-control' },
     startDate: '2018-10-01',
@@ -247,7 +241,6 @@ export const projects: Projects = {
   'tesla-coil': {
     id: 'tesla-coil',
     name: 'Tesla Coil',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/tesla-coil/coild.png' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2017/tesla-coil/' },
     startDate: '2017-06-01',
@@ -267,7 +260,6 @@ export const projects: Projects = {
   'laboratory-power-supply-v1': {
     id: 'laboratory-power-supply-v1',
     name: 'Laboratory Power Supply v1',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/laboratory-power-supply-v1/powersupply.jpg' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2019/laboratory-power-supply/#power-supply-1-from-220v-to-15v36v' },
     startDate: '2019-01-10',
@@ -288,7 +280,6 @@ export const projects: Projects = {
   'laboratory-power-supply-v2': {
     id: 'laboratory-power-supply-v2',
     name: 'Laboratory Power Supply v2',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/laboratory-power-supply-v2/power.png' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2019/laboratory-power-supply/#power-supply-2-regulating-any-input-to-15v36v' },
     startDate: '2019-01-10',
@@ -309,7 +300,6 @@ export const projects: Projects = {
   'bluetooth-arduino': {
     id: 'bluetooth-arduino',
     name: 'Bluetooth + Arduino',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/bluetooth-arduino/bluetooth.png' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/mastering-arduino/#automating-my-table-light-with-arduino-and-bluetooth' },
     startDate: '2018-10-01',
@@ -332,7 +322,6 @@ export const projects: Projects = {
   'door-lock-with-passcode': {
     id: 'door-lock-with-passcode',
     name: 'Smart door lock with passcode',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/door-lock-with-passcode/doorlock.png' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/door-lock-with-passcode/' },
     startDate: '2018-11-01',
@@ -355,7 +344,6 @@ export const projects: Projects = {
   'remote-rocket-launcher': {
     id: 'remote-rocket-launcher',
     name: 'Remote controlled rocket (firework) launcher',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/remote-rocket-launcher/rocketlauncher.png' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/firework-launcher/#designing-the-remote-controlled-firework-launcher' },
     startDate: '2018-12-01',
@@ -376,7 +364,6 @@ export const projects: Projects = {
   'wired-rocket-launcher': {
     id: 'wired-rocket-launcher',
     name: 'Wired rocket (firework) launcher',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/wired-rocket-launcher/wiredlaunsher.png' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2018/firework-launcher/#designing-the-remote-controlled-firework-launcher' },
     startDate: '2018-12-01',
@@ -394,33 +381,11 @@ export const projects: Projects = {
     },
     achievements: [],
   },
-  // 'wifi-jammer': {
-  //   id: 'wifi-jammer',
-  //   name: 'Wifi jammer',
-  //   // srcURL: { url: '' },
-  //   cover: { srcPath: 'projects/wifi-jammer/esp8266.jpg' },
-  //   startDate: '2019-01-10',
-  //   summary: [
-  //     'Simple wifi jammer based on ESP32',
-  //   ],
-  //   tags: [
-  //     { name: 'Software' },
-  //     { name: 'WiFi' },
-  //     { name: 'Jammer' },
-  //     { name: 'ESP8266' },
-  //   ],
-  //   gitHubRepo: {
-  //     owner: 'surenpoghosian',
-  //     repo: '',
-  //   },
-  //   achievements: [],
-  // },
   'network-attached-watering-system': {
     id: 'network-attached-watering-system',
     name: 'Network attached watering system (LoRa)',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/network-attached-watering-system/LoRaWAN.png' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2021/network-attached-watering-system/' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2021/network-attached-watering-system/' },
     startDate: '2021-07-30',
     summary: [
       'Network attached watering system based on ESP32 and LoRa',
@@ -441,9 +406,8 @@ export const projects: Projects = {
   'data-corellation-smoothing': {
     id: 'data-corellation-smoothing',
     name: 'Data corellation smoothing',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/data-corellation-smoothing/correlation.jpg' },
-    demoURL: { url: 'https://surenpoghosyan.dev/blog/2022/data-corellation-smoothing/' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2022/data-corellation-smoothing/' },
     startDate: '2022-01-09',
     summary: [
       'Sensor collected data corellation smoothing methods used for watering system',
@@ -505,7 +469,6 @@ export const projects: Projects = {
   'remote-controlled-rgb-lights': {
     id: 'remote-controlled-rgb-lights',
     name: 'Remote controlled RGB lights',
-    // srcURL: { url: '' },
     cover: { srcPath: 'projects/remote-controlled-rgb-lights/rgb.png' },
     demoURL: { url: 'https://surenpoghosyan.dev/blog/2020/smart-room/#remote-controlled-rgb-lights' },
     startDate: '2020-02-10',

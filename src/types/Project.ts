@@ -16,6 +16,7 @@ export type Project = {
   cover?: Image,
   srcURL?: Link,
   demoURL?: Link,
+  blogURL?: Link,
   startDate?: DateString,
   endDate?: DateString,
   tags?: Tag[],

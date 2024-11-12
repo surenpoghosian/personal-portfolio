@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoPlay } from '@react-icons/all-files/io5/IoPlay';
+import { FaNewspaper } from '@react-icons/all-files/fa/FaNewspaper';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { BiInfoCircle } from '@react-icons/all-files/bi/BiInfoCircle';
 import { GiAchievement } from '@react-icons/all-files/gi/GiAchievement';
@@ -91,6 +92,16 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </ButtonLink>
   ) : null;
 
+  const blogLink = project.blogURL && !project.archived ? (
+    <ButtonLink
+      link={project.blogURL}
+      startEnhancer={<FaNewspaper />}
+      className="mr-4"
+    >
+      Blog
+    </ButtonLink>
+  ) : null;
+
   const sourceCodeLink = project.srcURL && !project.archived ? (
     <ButtonLink
       link={project.srcURL}
@@ -110,9 +121,10 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </CardActions>
   ) : null;
 
-  const actions = demoLink || sourceCodeLink ? (
+  const actions = demoLink || blogLink || sourceCodeLink ? (
     <CardActions>
       {demoLink}
+      {blogLink}
       {sourceCodeLink}
     </CardActions>
   ) : null;
