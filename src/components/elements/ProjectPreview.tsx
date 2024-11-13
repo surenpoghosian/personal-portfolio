@@ -1,3 +1,6 @@
+/* eslint-disable indent */
+/* eslint-disable operator-linebreak */
+/* eslint-disable max-len */
 import React from 'react';
 import { IoPlay } from '@react-icons/all-files/io5/IoPlay';
 import { FaNewspaper } from '@react-icons/all-files/fa/FaNewspaper';
@@ -45,11 +48,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   ) : null;
 
   const projectDates = (
-    <DateRange
-      startDate={project.startDate}
-      endDate={project.endDate}
-      className="text-xs text-gray-500"
-    />
+    <DateRange startDate={project.startDate} endDate={project.endDate} className="text-xs text-gray-500" />
   );
 
   const projectStars = getGitHubProjectStars(project);
@@ -57,63 +56,42 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     url: project?.srcURL?.url,
     caption: 'Stars on GitHub',
   };
-  const stars = typeof projectStars === 'number' ? (
-    <Stars
-      stars={projectStars}
-      link={projectStarsLink}
-      className="text-xs text-gray-500 font-light"
-    />
-  ) : null;
+  const stars =
+    typeof projectStars === 'number' ? (
+      <Stars stars={projectStars} link={projectStarsLink} className="text-xs text-gray-500 font-light" />
+    ) : null;
 
   /* eslint-disable react/no-array-index-key */
-  const projectSummaryLines = project.summary ? project.summary.map(
-    (summaryLine: string | null, index: number) => (
-      <p key={index}>
-        {summaryLine}
-      </p>
-    ),
-  ) : null;
+  const projectSummaryLines = project.summary
+    ? project.summary.map((summaryLine: string | null, index: number) => <p key={index}>{summaryLine}</p>)
+    : null;
 
-  const projectSummary = projectSummaryLines ? (
-    <div className="mb-3 font-light">
-      {projectSummaryLines}
-    </div>
-  ) : null;
+  const projectSummary = projectSummaryLines ? <div className="mb-3 font-light">{projectSummaryLines}</div> : null;
 
-  const defaultProjectUrl = project.archived ? undefined : project.demoURL || project.srcURL;
+  const defaultProjectUrl = project.archived ? undefined : project.demoURL || project.srcURL || project.blogURL;
 
-  const demoLink = project.demoURL && !project.archived ? (
-    <ButtonLink
-      link={project.demoURL}
-      startEnhancer={<IoPlay />}
-      className="mr-4"
-    >
-      Demo
-    </ButtonLink>
-  ) : null;
+  const demoLink =
+    project.demoURL && !project.archived ? (
+      <ButtonLink link={project.demoURL} startEnhancer={<IoPlay />} className="mr-4">
+        Demo
+      </ButtonLink>
+    ) : null;
 
-  const blogLink = project.blogURL && !project.archived ? (
-    <ButtonLink
-      link={project.blogURL}
-      startEnhancer={<FaNewspaper />}
-      className="mr-4"
-    >
-      Blog
-    </ButtonLink>
-  ) : null;
+  const blogLink =
+    project.blogURL && !project.archived ? (
+      <ButtonLink link={project.blogURL} startEnhancer={<FaNewspaper />} className="mr-4">
+        Blog
+      </ButtonLink>
+    ) : null;
 
-  const sourceCodeLink = project.srcURL && !project.archived ? (
-    <ButtonLink
-      link={project.srcURL}
-      startEnhancer={<FaGithub />}
-    >
-      Source Code
-    </ButtonLink>
-  ) : null;
+  const sourceCodeLink =
+    project.srcURL && !project.archived ? (
+      <ButtonLink link={project.srcURL} startEnhancer={<FaGithub />}>
+        Source Code
+      </ButtonLink>
+    ) : null;
 
-  const projectCover = project.cover ? (
-    <FluidImage image={project.cover} />
-  ) : null;
+  const projectCover = project.cover ? <FluidImage image={project.cover} /> : null;
 
   const archivedStamp = project?.archived ? (
     <CardActions>
@@ -121,41 +99,41 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </CardActions>
   ) : null;
 
-  const actions = demoLink || blogLink || sourceCodeLink ? (
-    <CardActions>
-      {demoLink}
-      {blogLink}
-      {sourceCodeLink}
-    </CardActions>
-  ) : null;
+  const actions =
+    demoLink || blogLink || sourceCodeLink ? (
+      <CardActions>
+        {demoLink}
+        {blogLink}
+        {sourceCodeLink}
+      </CardActions>
+    ) : null;
 
-  const extraLinksList = project?.links && project?.links.length
-    ? project?.links.map((extraLink: Link, linkIndex) => {
-      return (
-        <li key={linkIndex}>
-          <HyperLink
-            link={extraLink}
-            className="text-sm underline"
-            separatorClassName="w-1"
-            startEnhancer={(<BiInfoCircle size={14} />)}
-          >
-            {extraLink?.caption || 'Read more'}
-          </HyperLink>
-        </li>
-      );
-    })
-    : null;
+  const extraLinksList =
+    project?.links && project?.links.length
+      ? project?.links.map((extraLink: Link, linkIndex) => {
+          return (
+            <li key={linkIndex}>
+              <HyperLink
+                link={extraLink}
+                className="text-sm underline"
+                separatorClassName="w-1"
+                startEnhancer={<BiInfoCircle size={14} />}
+              >
+                {extraLink?.caption || 'Read more'}
+              </HyperLink>
+            </li>
+          );
+        })
+      : null;
 
-  const achievementsLink = withAchievements
-    && project?.achievements
-    && project.achievements.length
-    ? (
+  const achievementsLink =
+    withAchievements && project?.achievements && project.achievements.length ? (
       <Row className="mt-3">
         <HyperLink
           link={getProjectAchievementsLink(project.id)}
           className="text-sm underline"
           separatorClassName="w-1"
-          startEnhancer={(<GiAchievement size={18} />)}
+          startEnhancer={<GiAchievement size={18} />}
         >
           Achievements
         </HyperLink>
@@ -163,31 +141,18 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
           <small>{project.achievements.length}</small>
         </Badge>
       </Row>
-    )
-    : null;
+    ) : null;
 
-  const externalLinks = extraLinksList ? (
-    <ul className="mt-3">
-      {extraLinksList}
-    </ul>
-  ) : null;
+  const externalLinks = extraLinksList ? <ul className="mt-3">{extraLinksList}</ul> : null;
 
   return (
     <Card>
-      <CardMedia link={defaultProjectUrl}>
-        {projectCover}
-      </CardMedia>
+      <CardMedia link={defaultProjectUrl}>{projectCover}</CardMedia>
       <CardContent>
-        <CardTitle link={defaultProjectUrl}>
-          {project.name}
-        </CardTitle>
+        <CardTitle link={defaultProjectUrl}>{project.name}</CardTitle>
         <Row className="mb-3 justify-between">
-          <div>
-            {projectDates}
-          </div>
-          <div>
-            {stars}
-          </div>
+          <div>{projectDates}</div>
+          <div>{stars}</div>
         </Row>
         {projectSummary}
         {projectTags}
