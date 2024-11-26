@@ -194,6 +194,29 @@ export const projects: Projects = {
     },
     achievements: [],
   },
+  'automated-app-testing-station': {
+    id: 'automated-app-testing-station',
+    name: 'Automated App Testing Station',
+    cover: { srcPath: 'projects/automated-test-station/macmini.jpg' },
+    blogURL: { url: 'https://surenpoghosyan.dev/blog/2024/automated-app-testing-station/' },
+    startDate: '2024-11-26',
+    summary: [
+      'Here’s a quick look at how I built a simple and effective testing setup for apps using Appium.',
+    ],
+    tags: [
+      { name: 'Automation' },
+      { name: 'Testing' },
+      { name: 'Appium' },
+      { name: 'iOS' },
+      { name: 'Android' },
+      { name: 'Web' },
+    ],
+    gitHubRepo: {
+      owner: 'surenpoghosian',
+      repo: '',
+    },
+    achievements: [],
+  },
   'fpv-drone': {
     id: 'fpv-drone',
     name: 'FPV racing drone',
