@@ -5,8 +5,8 @@ on:
     branches: [ main ]  # Change this if your main branch has a different name
   pull_request:
     branches: [ main ]  # Change this if your main branch has a different name
-  schedule:
-    - cron: '42 7 * * *'
+  # schedule:
+  #   - cron: '42 7 * * *'
 
 jobs:
   test:
